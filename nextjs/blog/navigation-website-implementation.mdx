@@ -1,0 +1,124 @@
+---
+title: 'Navigation Website Implementation'
+date: '2024-01-15'
+tags: ['wordpress', 'navigation web']
+draft: false
+summary: '使用WordPress构建导航网站的完整指南，包括安装、配置和主题定制。'
+layout: PostLayout
+images: ['/static/images/wordpress-index.png']
+---
+
+
+Example site based on this navigation theme: [https://nav.iowen.cn](https://nav.iowen.cn/)
+
+## 安装WordPress前的准备工作：
+
+1. 配置WordPress运行环境：
+   - 安装MySQL
+   - 安装Apache2
+   - 安装PHP
+   - 安装Apache2、MySQL和PHP的连接库
+
+由于WordPress需要使用MySQL数据库，我们以root用户身份进入MySQL为WordPress创建数据库：
+
+使用MySQL root账户创建数据库和用户：
+- 创建数据库：`create database wordpressdb;`
+- 创建用户：`create user wordpressuser;`
+- 创建密码：`set password for wordpressuser="wordpress123";`
+- 给新创建的用户授予数据库权限：`grant all privileges on wordpressdb.* to wordpressuser;`
+
+## WordPress安装和配置流程：
+
+### 1. 下载并复制WordPress
+
+首先下载WordPress 4.4或以上版本：
+https://wordpress.org/wordpress-5.6.10.tar.gz
+
+使用命令解压：
+
+```bash
+tar -zxvf wordpress-5.6.10.tar.gz
+```
+
+将WordPress的所有内容复制到/var/www/html/：
+
+```bash
+sudo cp -r ./wordpress-5.6.10/*  /var/www/html/
+```
+
+然后给/var/www/html/授予权限：
+
+```bash
+sudo chmod 777 /var/www/html/
+```
+
+### 2. 配置WordPress
+
+在浏览器中运行127.0.0.1进入WordPress配置页面。
+
+![Wordpress Configuration Page](/static/images/wordpress-index.png)
+
+*图1：配置初始页面*
+
+![Wordpress Database Setup](/static/images/wordpress-mysql.png)
+
+*图2：填写数据库名称、用户名和密码，其他两项保持默认*
+
+![Wordpress Installation](/static/images/wordpress-runinstall.png)
+
+*图3：安装过程*
+
+![Wordpress User Configuration](/static/images/wordpress-user.png)
+
+*图4：WordPress用户名和密码配置*
+
+![Wordpress Admin Login](/static/images/wordpress-admin.png)
+
+*图5：使用图4中的用户名和密码登录*
+
+现在在浏览器中输入127.0.0.1将进入WordPress主页，该页面使用默认模板：
+
+![Wordpress Homepage](/static/images/wordpress-page1.png)
+
+*图6：WordPress主页*
+
+### 3. 安装新的WordPress模板
+
+WordPress模板主要存储在/wp-content/themes目录中，每个模板都有自己的文件夹。
+
+因此，您首先需要将要使用的模板文件放在/themes下，然后在WordPress后台启用新模板：
+
+- 登录WordPress后台
+- 外观 -> 主题 -> 找到要启用的模板并激活
+
+例如，我们要使用的模板：[GitHub - owen0o0/WebStack: WordPress版本WebStack导航主题 https://nav.iowen.cn](https://github.com/owen0o0/WebStack)
+
+使用git clone下载并执行上述操作后，最后在浏览器中输入127.0.0.1得到以下界面。
+
+![WebStack Template](/static/images/wordpress-webstack.png)
+
+*图7：使用WebStack模板*
+
+### 4. 新模板的简单配置
+
+下面您可以对图7中的WebStack模板进行简单的自定义设置，例如：
+
+- 移除右上角的GitHub图标和链接
+- 移除左上角的"北京"天气
+- 中间的搜索框似乎有些冗余，只保留网站搜索标签，删除其他不必要的项目
+- 模仿[webstack演示站点 | 另一个WordPress站点 (iotheme.cn)](http://webstack.iotheme.cn/)添加一些示例标签页并查看效果
+
+
+
+**参考资料：**
+
+- [安装和部署WordPress (Ubuntu) (ppmy.cn)](http://www.ppmy.cn/news/10976.html)
+- [如何安装wordpress模板 (wordpress模块) - 顺时博客 (shunshiseo.com)](https://www.shunshiseo.com/WordPress/93541.html)
+
+参考的开源项目：
+
+[GitHub - WebStackPage/WebStackPage.github.io: ❤️静态响应式网站导航 - webstack.cc](https://github.com/WebStackPage/WebStackPage.github.io)
+
+来自上述开源站点的WordPress版本：
+
+[GitHub - owen0o0/WebStack: WordPress版本WebStack导航主题 https://nav.iowen.cn](https://github.com/owen0o0/WebStack)

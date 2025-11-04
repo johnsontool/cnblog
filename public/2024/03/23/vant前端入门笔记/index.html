@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang=zh-CN>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:description" content="John&#39;s Tool">
+    <meta property="og:type" content="website">
+    <meta name="description" content="John&#39;s Tool">
+    <meta name="keyword"  content="软件工具,AI工具,在线工具,生产力工具">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        结合vite与vant的移动端前端入门笔记 - John&#39;s Tool
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_28hi1hpxx24.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?04d0ff17bafc7f61b5e0a5afc324e403";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+
+	
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> ~欢迎您来访! </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>contact@johnstool.net</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/collect/">
+                    <i class="iconfont icon-shoucang1"></i>
+                    <span>收藏</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">1、前端项目初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E6%95%B4%E5%90%88Vant%E7%BB%84%E4%BB%B6%E5%BA%93"><span class="toc-text">2、整合Vant组件库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%E5%BC%95%E5%85%A5button%E7%BB%84%E4%BB%B6"><span class="toc-text">3、引入button组件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81%E5%BC%95%E5%85%A5%E9%A6%96%E9%A1%B5%E7%9A%84navbar%E5%92%8Ctabbar%E7%BB%84%E4%BB%B6"><span class="toc-text">4、引入首页的navbar和tabbar组件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4-1-%E6%B7%BB%E5%8A%A0navbar"><span class="toc-text">4.1 添加navbar</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-2-%E6%B7%BB%E5%8A%A0tabbar"><span class="toc-text">4.2 添加tabbar</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%E3%80%81%E6%B7%BB%E5%8A%A0tabbar%E5%AF%B9%E5%BA%94%E7%9A%84%E9%A1%B5%E9%9D%A2"><span class="toc-text">5、添加tabbar对应的页面</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6%E3%80%81%E6%95%B4%E5%90%88%E8%B7%AF%E7%94%B1"><span class="toc-text">6、整合路由</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#6-1%E3%80%81%E5%AE%9A%E4%B9%89routes%E5%B9%B6%E6%B7%BB%E5%8A%A0router"><span class="toc-text">6.1、定义routes并添加router</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-2%E3%80%81%E5%B0%86tabbar%E4%BF%AE%E6%94%B9%E4%B8%BA%E8%B7%AF%E7%94%B1%E5%BD%A2%E5%BC%8F%EF%BC%9A"><span class="toc-text">6.2、将tabbar修改为路由形式：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7%E3%80%81%E5%A2%9E%E5%8A%A0%E6%90%9C%E7%B4%A2%E9%A1%B5%E4%B8%8E%E8%BF%94%E5%9B%9E%E5%88%B0%E4%B8%BB%E9%A1%B5"><span class="toc-text">7、增加搜索页与返回到主页</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8%E3%80%81%E6%9E%84%E5%BB%BA%E5%8F%8A%E9%83%A8%E7%BD%B2"><span class="toc-text">8、构建及部署</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9%E3%80%81%E5%85%B6%E4%BB%96%E5%8F%8A%E6%BA%90%E4%BB%A3%E7%A0%81"><span class="toc-text">9、其他及源代码</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-bg" id="search-bg"></div>
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> ~欢迎您来访! </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        结合vite与vant的移动端前端入门笔记
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2024-03-23 00:00:00</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#项目开发" title="项目开发">项目开发</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#vant" title="vant">vant</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <hr>
+<p>本文主要介绍基于Vite与Vant快速开发移动端前端页面。利用Vant框架，我们可以像搭积木一样，快速地构建移动端前端页面。</p>
+<p>本文使用的开发工具：</p>
+<ul>
+<li>nvm：Node.js版本管理工具；windows版，关注公众号”青椒工具”，发送“nvm”获取下载链接；</li>
+<li>webstorm：2021版，前端开发IDE；windows版，关注公众号”青椒工具”，发送“webstorm”获取下载链接；</li>
+</ul>
+<p>项目源代码<a target="_blank" rel="noopener" href="https://gitee.com/bigbug55/vantabc">vantabc: 这是是一个基于vite和vant的入门学习代码，包含项目初始化，组件引入，vue-router整合等移动端前端开发的入门内容。</a></p>
+<p>源代码中每个阶段都有commit，建议git log查看，回退到对应的版本查看对应阶段的源代码。</p>
+<h4 id="1、前端项目初始化"><a href="#1、前端项目初始化" class="headerlink" title="1、前端项目初始化"></a>1、前端项目初始化</h4><p>使用脚手架，初始化项目：</p>
+<p><a target="_blank" rel="noopener" href="https://vitejs.cn/guide/#scaffolding-your-first-vite-project">https://vitejs.cn/guide/#scaffolding-your-first-vite-project</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn create vite</span><br></pre></td></tr></table></figure>
+
+<p>出现问题，显示我的node.js版本太低；</p>
+<p>这里的担心：如果舍弃当前的版本，安装更新node.js版本，那么之前使用旧版本运行的项目可能就会出错，此处最好是可以有node.js的版本管理工具，可以随意切换使用的node.js版本，然后相互之间隔离；</p>
+<p>还真有这样的工具：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/coreybutler/nvm-windows</span><br><span class="line">https://github.com/coreybutler/nvm-windows/releases</span><br></pre></td></tr></table></figure>
+
+<p>nvm简单的使用命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##罗列当前安装的node.js版本</span></span><br><span class="line">nvm list</span><br><span class="line"><span class="comment">##安装新版本</span></span><br><span class="line">nvm install 18.16.1 64-bit</span><br><span class="line"><span class="comment">##切换版本</span></span><br><span class="line">nvm use 18.16.1</span><br><span class="line"><span class="comment">##确认当前使用的版本</span></span><br><span class="line">node -v</span><br></pre></td></tr></table></figure>
+
+<p>再重新运行脚手架，创建项目：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn create vite</span><br></pre></td></tr></table></figure>
+
+<p>需要我们输入的信息包括:</p>
+<ul>
+<li>项目名称；自己取个名字；</li>
+<li>框架；选择”Vue”；</li>
+<li>是否使用TypeScript：是；</li>
+</ul>
+<p>完成创建后，我们可以使用<strong>webstorm</strong>打开项目。在终端安装依赖：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<p>安装完毕依赖后，点击如下条目对应的左边绿色三角形：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;dev&quot;</span>:<span class="string">&quot;vite&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/./img/2024-03-17-dev-vite-%E5%90%AF%E5%8A%A8%E7%A8%8B%E5%BA%8F.jpg" alt="2024-03-17-dev-vite-启动程序"></p>
+<p>启动后，在终端可以看到：</p>
+<p><img src="/./img/2024-03-17-vite%E5%90%AF%E5%8A%A8%E5%90%8E%E7%BD%91%E5%9D%80.jpg" alt="2024-03-17-vite启动后网址"></p>
+<p>点击对应的网址，可以看到浏览器的启动页面:</p>
+<p><img src="/./img/2024-03-17-%E6%B5%8F%E8%A7%88%E5%99%A8%E9%A1%B5%E9%9D%A2%E5%88%9D%E5%A7%8B%E5%8C%96.jpg" alt="2024-03-17-浏览器页面初始化"></p>
+<h4 id="2、整合Vant组件库"><a href="#2、整合Vant组件库" class="headerlink" title="2、整合Vant组件库"></a>2、整合Vant组件库</h4><p>什么是 Vant？</p>
+<p>Vant是轻量、可定制的移动端组件库。</p>
+<p>安装vant:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##使用npm安装vant</span></span><br><span class="line">npm i vant</span><br><span class="line"><span class="comment">##或者使用yarn安装vant</span></span><br><span class="line">yarn add vant</span><br></pre></td></tr></table></figure>
+
+
+
+<p>根据官方文档:<a target="_blank" rel="noopener" href="https://vant-contrib.gitee.io/vant/#/zh-CN/quickstart%EF%BC%8C%E5%BC%95%E5%85%A5vant%E7%BB%84%E4%BB%B6%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9C%89%E4%B8%A4%E7%A7%8D%EF%BC%9A%E5%B8%B8%E8%A7%84%E5%BC%95%E5%85%A5%E5%92%8C%E6%8C%89%E9%9C%80%E5%BC%95%E5%85%A5%E3%80%82%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F%E6%88%91%E4%BB%AC%E9%83%BD%E4%BB%8B%E7%BB%8D%E4%B8%8B%EF%BC%8C%E5%90%8E%E7%BB%AD%E6%88%91%E4%BB%AC%E4%B8%BB%E8%A6%81%E4%BD%BF%E7%94%A8%E5%B8%B8%E8%A7%84%E5%BC%95%E5%85%A5%E3%80%82">https://vant-contrib.gitee.io/vant/#/zh-CN/quickstart，引入vant组件的方式有两种：常规引入和按需引入。两种方式我们都介绍下，后续我们主要使用常规引入。</a></p>
+<p>1、常规引入；</p>
+<p>​	开发时，一般我们选用常规引入；</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createApp &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span>;</span><br><span class="line"><span class="comment">// 1. 引入你需要的组件</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Button</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;vant&#x27;</span>;</span><br><span class="line"><span class="comment">// 2. 引入组件样式</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;vant/lib/index.css&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">createApp</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 注册你需要的组件</span></span><br><span class="line">app.<span class="title function_">use</span>(<span class="title class_">Button</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>2、按需引入；</p>
+<p>​	生产环境，一般使用按需引入；</p>
+<p>按需引入，需要安装如下:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add @vant/auto-import-resolver unplugin-vue-components -D</span><br></pre></td></tr></table></figure>
+
+
+
+<p>配置插件，将下列官方参考文档整合到vite.config.js文件：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> vue <span class="keyword">from</span> <span class="string">&#x27;@vitejs/plugin-vue&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Components</span> <span class="keyword">from</span> <span class="string">&#x27;unplugin-vue-components/vite&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">VantResolver</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;@vant/auto-import-resolver&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="title function_">vue</span>(),</span><br><span class="line">    <span class="title class_">Components</span>(&#123;</span><br><span class="line">      <span class="attr">resolvers</span>: [<span class="title class_">VantResolver</span>()],</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>整合后的vite.config.js文件:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineConfig &#125; <span class="keyword">from</span> <span class="string">&#x27;vite&#x27;</span></span><br><span class="line"><span class="keyword">import</span> vue <span class="keyword">from</span> <span class="string">&#x27;@vitejs/plugin-vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Components</span> <span class="keyword">from</span> <span class="string">&#x27;unplugin-vue-components/vite&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">VantResolver</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;@vant/auto-import-resolver&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// https://vitejs.dev/config/</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">      <span class="title function_">vue</span>(),</span><br><span class="line">    <span class="title class_">Components</span>(&#123;</span><br><span class="line">      <span class="attr">resolvers</span>: [<span class="title class_">VantResolver</span>()],</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="3、引入button组件"><a href="#3、引入button组件" class="headerlink" title="3、引入button组件"></a>3、引入button组件</h4><p>点击官网：<a target="_blank" rel="noopener" href="https://vant-contrib.gitee.io/vant/#/zh-CN/button#yin-ru">Button 按钮 - Vant 4 (gitee.io)</a></p>
+<p>引入button组件的示例代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createApp &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span>;</span><br><span class="line"><span class="comment">// 1. 引入你需要的组件</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Button</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;vant&#x27;</span>;</span><br><span class="line"><span class="comment">// 2. 引入组件样式</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;vant/lib/index.css&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">createApp</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 注册你需要的组件</span></span><br><span class="line">app.<span class="title function_">use</span>(<span class="title class_">Button</span>);</span><br></pre></td></tr></table></figure>
+
+<p>将上述的示例代码整合到&#x2F;src&#x2F;main.ts中，整合后的main.ts代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createApp &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./style.css&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">App</span> <span class="keyword">from</span> <span class="string">&#x27;./App.vue&#x27;</span></span><br><span class="line"><span class="comment">// 1. 引入你需要的组件</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Button</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;vant&#x27;</span>;</span><br><span class="line"><span class="comment">// 2. 引入组件样式</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;vant/lib/index.css&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">createApp</span>(<span class="title class_">App</span>);</span><br><span class="line"><span class="comment">// 3. 注册你需要的组件</span></span><br><span class="line">app.<span class="title function_">use</span>(<span class="title class_">Button</span>);</span><br><span class="line">app.<span class="title function_">mount</span>(<span class="string">&#x27;#app&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>然后，再将如下的5个按钮代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;van-button type=<span class="string">&quot;primary&quot;</span>&gt;主要按钮&lt;/van-button&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">van-button</span> <span class="attr">type</span>=<span class="string">&quot;success&quot;</span>&gt;</span>成功按钮<span class="tag">&lt;/<span class="name">van-button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">van-button</span> <span class="attr">type</span>=<span class="string">&quot;default&quot;</span>&gt;</span>默认按钮<span class="tag">&lt;/<span class="name">van-button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">van-button</span> <span class="attr">type</span>=<span class="string">&quot;warning&quot;</span>&gt;</span>警告按钮<span class="tag">&lt;/<span class="name">van-button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">van-button</span> <span class="attr">type</span>=<span class="string">&quot;danger&quot;</span>&gt;</span>危险按钮<span class="tag">&lt;/<span class="name">van-button</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>复制到App.vue代码中的template标签中，App.vu的代码变为：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup lang=<span class="string">&quot;ts&quot;</span>&gt;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">HelloWorld</span> <span class="keyword">from</span> <span class="string">&#x27;./components/HelloWorld.vue&#x27;</span></span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://vitejs.dev&quot;</span> <span class="attr">target</span>=<span class="string">&quot;_blank&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;/vite.svg&quot;</span> <span class="attr">class</span>=<span class="string">&quot;logo&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;Vite logo&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://vuejs.org/&quot;</span> <span class="attr">target</span>=<span class="string">&quot;_blank&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;./assets/vue.svg&quot;</span> <span class="attr">class</span>=<span class="string">&quot;logo vue&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;Vue logo&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">HelloWorld</span> <span class="attr">msg</span>=<span class="string">&quot;Vite + Vue&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">van-button</span> <span class="attr">type</span>=<span class="string">&quot;primary&quot;</span>&gt;</span>主要按钮<span class="tag">&lt;/<span class="name">van-button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">van-button</span> <span class="attr">type</span>=<span class="string">&quot;success&quot;</span>&gt;</span>成功按钮<span class="tag">&lt;/<span class="name">van-button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">van-button</span> <span class="attr">type</span>=<span class="string">&quot;default&quot;</span>&gt;</span>默认按钮<span class="tag">&lt;/<span class="name">van-button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">van-button</span> <span class="attr">type</span>=<span class="string">&quot;warning&quot;</span>&gt;</span>警告按钮<span class="tag">&lt;/<span class="name">van-button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">van-button</span> <span class="attr">type</span>=<span class="string">&quot;danger&quot;</span>&gt;</span>危险按钮<span class="tag">&lt;/<span class="name">van-button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">style</span> <span class="attr">scoped</span>&gt;</span><span class="language-css"></span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"><span class="selector-class">.logo</span> &#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">height</span>: <span class="number">6em</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">padding</span>: <span class="number">1.5em</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">will-change</span>: filter;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">transition</span>: filter <span class="number">300ms</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">&#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"><span class="selector-class">.logo</span><span class="selector-pseudo">:hover</span> &#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">filter</span>: <span class="built_in">drop-shadow</span>(<span class="number">0</span> <span class="number">0</span> <span class="number">2em</span> <span class="number">#646cffaa</span>);</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">&#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"><span class="selector-class">.logo</span><span class="selector-class">.vue</span><span class="selector-pseudo">:hover</span> &#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">filter</span>: <span class="built_in">drop-shadow</span>(<span class="number">0</span> <span class="number">0</span> <span class="number">2em</span> <span class="number">#42b883aa</span>);</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">&#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>重新启动可以发现网页中出现5个按钮图：</p>
+<p><img src="/./img/2024-03-17-%E6%B7%BB%E5%8A%A0%E6%8C%89%E9%92%AE%E5%90%8E%E7%9A%84%E7%BD%91%E9%A1%B5.jpg" alt="2024-03-17-添加按钮后的网页.jpg"></p>
+<h4 id="4、引入首页的navbar和tabbar组件"><a href="#4、引入首页的navbar和tabbar组件" class="headerlink" title="4、引入首页的navbar和tabbar组件"></a>4、引入首页的navbar和tabbar组件</h4><p>一般的手机端应用顶端有navbar组件，底部有tabbar组件，那么我们就使用vant来引入这两者。</p>
+<p>由于移动端应用的navbar和tabbar是要复用的，即切换界面时，这两者是不变的，所以有必要将这两者做成公共的布局。</p>
+<h5 id="4-1-添加navbar"><a href="#4-1-添加navbar" class="headerlink" title="4.1 添加navbar"></a>4.1 添加navbar</h5><p>在当前的components目录下创建layouts目录，在其中新建组件：BasicLaytout.vue文件：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">van-nav-bar</span> <span class="attr">title</span>=<span class="string">&quot;标题&quot;</span> <span class="attr">left-text</span>=<span class="string">&quot;返回&quot;</span> </span></span></span><br><span class="line"><span class="tag"><span class="language-xml"><span class="attr">left-arrow</span>  @<span class="attr">click-left</span>=<span class="string">&quot;onClickLeft&quot;</span> @<span class="attr">click-right</span>=<span class="string">&quot;onClickRight&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">template</span> #<span class="attr">right</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">van-icon</span> <span class="attr">name</span>=<span class="string">&quot;search&quot;</span> <span class="attr">size</span>=<span class="string">&quot;18&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">van-nav-bar</span>&gt;</span></span></span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="title function_">setup</span>(<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">const</span> <span class="title function_">onClickLeft</span> = (<span class="params"></span>) =&gt; <span class="title function_">alert</span>(<span class="string">&#x27;left&#x27;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">const</span> <span class="title function_">onClickRight</span> = (<span class="params"></span>) =&gt; <span class="title function_">alert</span>(<span class="string">&#x27;right&#x27;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">return</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      onClickLeft,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      onClickRight,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">&#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">style</span> <span class="attr">scoped</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>App.vue源代码修改为：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup lang=<span class="string">&quot;ts&quot;</span>&gt;</span><br><span class="line"><span class="comment">/*import HelloWorld from &#x27;./components/HelloWorld.vue&#x27;*/</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">BasicLayout</span> <span class="keyword">from</span> <span class="string">&quot;./components/layouts/BasicLayout.vue&quot;</span>;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"> <span class="tag">&lt;<span class="name">BasicLayout</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">style</span> <span class="attr">scoped</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>main.ts中增加对NavBar的引用：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createApp &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./style.css&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">App</span> <span class="keyword">from</span> <span class="string">&#x27;./App.vue&#x27;</span></span><br><span class="line"><span class="comment">// 1. 引入你需要的组件</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">NavBar</span>, <span class="title class_">Button</span> &#125;  <span class="keyword">from</span> <span class="string">&#x27;vant&#x27;</span>;</span><br><span class="line"><span class="comment">// 2. 引入组件样式</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;vant/lib/index.css&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">createApp</span>(<span class="title class_">App</span>);</span><br><span class="line"><span class="comment">// 3. 注册你需要的组件</span></span><br><span class="line">app.<span class="title function_">use</span>( <span class="title class_">NavBar</span> );</span><br><span class="line">app.<span class="title function_">use</span>( <span class="title class_">Button</span> );</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">mount</span>(<span class="string">&#x27;#app&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>重新编译启动，访问<a target="_blank" rel="noopener" href="http://localhost:5173/%EF%BC%8C%E4%BC%9A%E5%8F%91%E7%8E%B0%E6%A0%BC%E5%BC%8F%E6%B7%B7%E4%B9%B1%EF%BC%9A">http://localhost:5173/，会发现格式混乱：</a></p>
+<p><img src="/./img/2024-03-22-navbar%E6%A0%BC%E5%BC%8F%E6%B7%B7%E4%B9%B1.jpg" alt="2024-03-22-navbar格式混乱"></p>
+<p>原因是main.ts中引入了系统的style.css文件，将main.ts中的这行代码注释即可：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createApp &#125; from <span class="string">&#x27;vue&#x27;</span></span><br><span class="line">// import <span class="string">&#x27;./style.css&#x27;</span></span><br><span class="line">import App from <span class="string">&#x27;./App.vue&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>再次重启后，可以发现NavBar显示正常，如下图所示：</p>
+<p><img src="/./img/2024-03-22-navbar%E6%A0%BC%E5%BC%8F%E6%AD%A3%E5%B8%B8.jpg" alt="2024-03-22-navbar格式正常"></p>
+<p>现在的问题是上述NavBar右侧的”搜索”图标没有正常显示，主要原因是我们没有在main.ts中引入Icon组件，在main.ts中要增加如下的两个语句：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Icon</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;vant&#x27;</span>;</span><br><span class="line">app.<span class="title function_">use</span>(<span class="title class_">Icon</span>);</span><br></pre></td></tr></table></figure>
+
+<p>再重启，就可以发现右上角出现搜索的图标。</p>
+<h5 id="4-2-添加tabbar"><a href="#4-2-添加tabbar" class="headerlink" title="4.2 添加tabbar"></a>4.2 添加tabbar</h5><p>参照上述流程，我们再给手机端主页加上tabbar组件，该组件的用途：底部导航栏，用于在不同页面之间进行切换。</p>
+<p>官方地址：<a target="_blank" rel="noopener" href="https://vant-contrib.gitee.io/vant/#/zh-CN/tabbar#jie-shao">Tabbar 标签栏 - Vant 4 (gitee.io)</a></p>
+<p>主要的修改集中在BasicLayout.vue和main.ts文件中；其中BasicLayout.vue:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">van-nav-bar</span> <span class="attr">title</span>=<span class="string">&quot;标题&quot;</span> <span class="attr">left-text</span>=<span class="string">&quot;返回&quot;</span> <span class="attr">left-arrow</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">               @<span class="attr">click-left</span>=<span class="string">&quot;onClickLeft&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">               @<span class="attr">click-right</span>=<span class="string">&quot;onClickRight&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">template</span> #<span class="attr">right</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">van-icon</span> <span class="attr">name</span>=<span class="string">&quot;search&quot;</span> <span class="attr">size</span>=<span class="string">&quot;18&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">van-nav-bar</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">van-tabbar</span> <span class="attr">v-model</span>=<span class="string">&quot;active&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">van-tabbar-item</span> <span class="attr">icon</span>=<span class="string">&quot;home-o&quot;</span>&gt;</span>主页<span class="tag">&lt;/<span class="name">van-tabbar-item</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">van-tabbar-item</span> <span class="attr">icon</span>=<span class="string">&quot;search&quot;</span>&gt;</span>搜索<span class="tag">&lt;/<span class="name">van-tabbar-item</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">van-tabbar-item</span> <span class="attr">icon</span>=<span class="string">&quot;friends-o&quot;</span>&gt;</span>个人中心<span class="tag">&lt;/<span class="name">van-tabbar-item</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">van-tabbar</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">import</span> &#123; ref &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="title function_">setup</span>(<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">const</span> <span class="title function_">onClickLeft</span> = (<span class="params"></span>) =&gt; <span class="title function_">alert</span>(<span class="string">&#x27;left&#x27;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">const</span> <span class="title function_">onClickRight</span> = (<span class="params"></span>) =&gt; <span class="title function_">alert</span>(<span class="string">&#x27;right&#x27;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">const</span> active = <span class="title function_">ref</span>(<span class="number">0</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">return</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      onClickLeft,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      onClickRight,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      active,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">&#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">style</span> <span class="attr">scoped</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>main.ts中增加的代码如下:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Tabbar</span>, <span class="title class_">TabbarItem</span> &#125; <span class="keyword">from</span> <span class="string">&quot;vant&quot;</span>;</span><br><span class="line">app.<span class="title function_">use</span>(<span class="string">&#x27;Tabbar&#x27;</span>);</span><br><span class="line">app.<span class="title function_">use</span>(<span class="string">&#x27;TabbarItem&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>重新启动后，得到页面如下：</p>
+<p><img src="/./img/2024-03-22-%E5%AE%8C%E6%88%90navbar%E4%B8%8Etabbar%E7%9A%84%E6%B7%BB%E5%8A%A0.jpg" alt="2024-03-22-完成navbar与tabbar的添加"></p>
+<h4 id="5、添加tabbar对应的页面"><a href="#5、添加tabbar对应的页面" class="headerlink" title="5、添加tabbar对应的页面"></a>5、添加tabbar对应的页面</h4><p>现在我们暂时有三个tabbar：主页，搜索和个人中心。针对每个tabbar，开发一个页面。</p>
+<p>在components目录下，创建pages目录，然后在其中创建三个页面，分别为：Index.vue, SearchItems.vue和Usercenter.vue。</p>
+<p>为了区分不同的点击，我们首先在tabbar组件中，增加name关键字区分：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;van-tabbar v-model=<span class="string">&quot;active&quot;</span>&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">van-tabbar-item</span> <span class="attr">icon</span>=<span class="string">&quot;home-o&quot;</span> <span class="attr">name</span>=<span class="string">&quot;index&quot;</span>&gt;</span>主页<span class="tag">&lt;/<span class="name">van-tabbar-item</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">van-tabbar-item</span> <span class="attr">icon</span>=<span class="string">&quot;search&quot;</span> <span class="attr">name</span>=<span class="string">&quot;searchitems&quot;</span>&gt;</span>搜索<span class="tag">&lt;/<span class="name">van-tabbar-item</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">van-tabbar-item</span> <span class="attr">icon</span>=<span class="string">&quot;friends-o&quot;</span> <span class="attr">name</span>=<span class="string">&quot;usercenter&quot;</span>&gt;</span>个人中心<span class="tag">&lt;/<span class="name">van-tabbar-item</span>&gt;</span></span></span><br><span class="line">&lt;/van-tabbar&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>在BasicLayout再增加：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">&quot;content&quot;</span>&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-if</span>=<span class="string">&quot;active === &#x27;index&#x27;&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">Index</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-if</span>=<span class="string">&quot;active === &#x27;searchitems&#x27;&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">SearchItems</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-if</span>=<span class="string">&quot;active === &#x27;usercenter&#x27;&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">Usercenter</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line">&lt;/div&gt;  </span><br></pre></td></tr></table></figure>
+
+<p>另外script中增加：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">import</span> &#123; ref &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Index</span> <span class="keyword">from</span> <span class="string">&quot;../pages/Index.vue&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">SearchItems</span> <span class="keyword">from</span> <span class="string">&quot;../pages/SearchItems.vue&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Usercenter</span> <span class="keyword">from</span> <span class="string">&quot;../pages/Usercenter.vue&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">components</span>: &#123;<span class="title class_">SearchItems</span>, <span class="title class_">Usercenter</span>, <span class="title class_">Index</span>&#125;,</span><br><span class="line">  <span class="title function_">setup</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">onClickLeft</span> = (<span class="params"></span>) =&gt; <span class="title function_">alert</span>(<span class="string">&#x27;left&#x27;</span>);</span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">onClickRight</span> = (<span class="params"></span>) =&gt; <span class="title function_">alert</span>(<span class="string">&#x27;right&#x27;</span>);</span><br><span class="line">    <span class="keyword">const</span> active = <span class="title function_">ref</span>(<span class="string">&#x27;index&#x27;</span>);</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+
+<p>完成上述添加后，就可以通过点击tabbar来切换不同的页面。</p>
+<h4 id="6、整合路由"><a href="#6、整合路由" class="headerlink" title="6、整合路由"></a>6、整合路由</h4><p>当前我们切换页面的方式是通过v-if的方式，这种方式不够灵活，当页面一多，也不好维护；</p>
+<p>所以我们使用vue-router来实现页面的路由，官网：<a target="_blank" rel="noopener" href="https://router.vuejs.org/zh/installation.html">安装 | Vue Router (vuejs.org)</a></p>
+<p>根据官网，安装命令：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add vue-router@<span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+<p>参考其使用入门<a target="_blank" rel="noopener" href="https://router.vuejs.org/zh/guide/">入门 | Vue Router (vuejs.org)</a>，在js下的使用模板：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 定义路由组件.</span></span><br><span class="line"><span class="comment">// 也可以从其他文件导入</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Home</span> = &#123; <span class="attr">template</span>: <span class="string">&#x27;&lt;div&gt;Home&lt;/div&gt;&#x27;</span> &#125;</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">About</span> = &#123; <span class="attr">template</span>: <span class="string">&#x27;&lt;div&gt;About&lt;/div&gt;&#x27;</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 定义一些路由</span></span><br><span class="line"><span class="comment">// 每个路由都需要映射到一个组件。</span></span><br><span class="line"><span class="comment">// 我们后面再讨论嵌套路由。</span></span><br><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">  &#123; <span class="attr">path</span>: <span class="string">&#x27;/&#x27;</span>, <span class="attr">component</span>: <span class="title class_">Home</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">path</span>: <span class="string">&#x27;/about&#x27;</span>, <span class="attr">component</span>: <span class="title class_">About</span> &#125;,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 创建路由实例并传递 `routes` 配置</span></span><br><span class="line"><span class="comment">// 你可以在这里输入更多的配置，但我们在这里</span></span><br><span class="line"><span class="comment">// 暂时保持简单</span></span><br><span class="line"><span class="keyword">const</span> router = <span class="title class_">VueRouter</span>.<span class="title function_">createRouter</span>(&#123;</span><br><span class="line">  <span class="comment">// 4. 内部提供了 history 模式的实现。为了简单起见，我们在这里使用 hash 模式。</span></span><br><span class="line">  <span class="attr">history</span>: <span class="title class_">VueRouter</span>.<span class="title function_">createWebHashHistory</span>(),</span><br><span class="line">  routes, <span class="comment">// `routes: routes` 的缩写</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 5. 创建并挂载根实例</span></span><br><span class="line"><span class="keyword">const</span> app = <span class="title class_">Vue</span>.<span class="title function_">createApp</span>(&#123;&#125;)</span><br><span class="line"><span class="comment">// 确保 _use_ 路由实例使</span></span><br><span class="line"><span class="comment">// 整个应用支持路由。</span></span><br><span class="line">app.<span class="title function_">use</span>(router)</span><br><span class="line">app.<span class="title function_">mount</span>(<span class="string">&#x27;#app&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>上述文件要整合到我们的项目中：</p>
+<ul>
+<li>1、第1步，我们不需要做，因为我们在pages中已经定义了页面；</li>
+<li>2、第2步，需要做，给目录pages中的组件定义路由名；</li>
+<li>3、第3、4、5步，需要做，主要是整合到main.ts文件中；</li>
+</ul>
+<h5 id="6-1、定义routes并添加router"><a href="#6-1、定义routes并添加router" class="headerlink" title="6.1、定义routes并添加router"></a>6.1、定义routes并添加router</h5><p>持续开发中，可能会出现很多页面，所以最好将routes定义到单独某个目录文件中，不要全部写在main.ts一个文件中；</p>
+<p>所以在&#x2F;src&#x2F;目录下，创建configs目录，再新建route.ts文件：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">SearchItems</span> <span class="keyword">from</span> <span class="string">&quot;../components/pages/SearchItems.vue&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Usercenter</span> <span class="keyword">from</span> <span class="string">&quot;../components/pages/Usercenter.vue&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Index</span> <span class="keyword">from</span> <span class="string">&quot;../components/pages/Index.vue&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">    &#123; <span class="attr">path</span>: <span class="string">&#x27;/&#x27;</span>, <span class="attr">component</span>: <span class="title class_">Index</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">path</span>: <span class="string">&#x27;/searchitems&#x27;</span>, <span class="attr">component</span>: <span class="title class_">SearchItems</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">path</span>: <span class="string">&#x27;/usercenter&#x27;</span>, <span class="attr">component</span>: <span class="title class_">Usercenter</span>&#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> routes;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>回到main.ts，我们添加如下的内容：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span>  routes <span class="keyword">from</span> <span class="string">&quot;./configs/route&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> <span class="title class_">VueRouter</span> <span class="keyword">from</span> <span class="string">&#x27;vue-router&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> router = <span class="title class_">VueRouter</span>.<span class="title function_">createRouter</span>(&#123;</span><br><span class="line">  <span class="comment">// 4. 内部提供了 history 模式的实现。为了简单起见，我们在这里使用 hash 模式。</span></span><br><span class="line">  <span class="attr">history</span>: <span class="title class_">VueRouter</span>.<span class="title function_">createWebHashHistory</span>(),</span><br><span class="line">  routes, <span class="comment">// `routes: routes` 的缩写</span></span><br><span class="line">&#125;)</span><br><span class="line">app.<span class="title function_">use</span>(router);</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="6-2、将tabbar修改为路由形式："><a href="#6-2、将tabbar修改为路由形式：" class="headerlink" title="6.2、将tabbar修改为路由形式："></a>6.2、将tabbar修改为路由形式：</h5><p>vant的tabbar本身支持基于vue-router的路由模式：<a target="_blank" rel="noopener" href="https://vant-contrib.gitee.io/vant/#/zh-CN/tabbar#lu-you-mo-shi">Tabbar 标签栏 - Vant 4 (gitee.io)</a></p>
+<p>官方给出的示例代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-view /&gt;</span><br><span class="line">    </span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">van-tabbar</span> <span class="attr">route</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">van-tabbar-item</span> <span class="attr">replace</span> <span class="attr">to</span>=<span class="string">&quot;/home&quot;</span> <span class="attr">icon</span>=<span class="string">&quot;home-o&quot;</span>&gt;</span>标签<span class="tag">&lt;/<span class="name">van-tabbar-item</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">van-tabbar-item</span> <span class="attr">replace</span> <span class="attr">to</span>=<span class="string">&quot;/search&quot;</span> <span class="attr">icon</span>=<span class="string">&quot;search&quot;</span>&gt;</span>标签<span class="tag">&lt;/<span class="name">van-tabbar-item</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">van-tabbar</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>我们将官方的代码整合到我们的BasicLayout.vue组件中：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">&quot;content&quot;</span>&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">router-view</span> /&gt;</span></span></span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">van-tabbar</span> <span class="attr">route</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">van-tabbar-item</span> <span class="attr">replace</span> <span class="attr">to</span>=<span class="string">&quot;/&quot;</span> <span class="attr">icon</span>=<span class="string">&quot;home-o&quot;</span>&gt;</span>主页<span class="tag">&lt;/<span class="name">van-tabbar-item</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">van-tabbar-item</span> <span class="attr">replace</span> <span class="attr">to</span>=<span class="string">&quot;/searchitems&quot;</span> <span class="attr">icon</span>=<span class="string">&quot;search&quot;</span>&gt;</span>搜索<span class="tag">&lt;/<span class="name">van-tabbar-item</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">van-tabbar-item</span> <span class="attr">replace</span> <span class="attr">to</span>=<span class="string">&quot;/usercenter&quot;</span> <span class="attr">icon</span>=<span class="string">&quot;friends-o&quot;</span>&gt;</span>个人中心<span class="tag">&lt;/<span class="name">van-tabbar-item</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">van-tabbar</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>注意上述中的：router-view是显示页面的地方。</p>
+<p>综合上述的步骤，现在我们就可以使用路由的方式，来实现页面之间的跳转。</p>
+<h4 id="7、增加搜索页与返回到主页"><a href="#7、增加搜索页与返回到主页" class="headerlink" title="7、增加搜索页与返回到主页"></a>7、增加搜索页与返回到主页</h4><p>当前的NavBar中，左侧的返回与右侧的搜索按钮，只能弹出alert框。现在我们将左侧的”返回”按钮，导向到Index组件；</p>
+<p>右侧的”搜索”按钮导向到搜索页。</p>
+<p>我们先到官网选择一个搜索页模板：<a target="_blank" rel="noopener" href="https://vant-contrib.gitee.io/vant/#/zh-CN/search">Search 搜索 - Vant 4 (gitee.io)</a>，然后到pages目录下创建SearchPage.vue组件：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;/&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">van-search</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">v-model</span>=<span class="string">&quot;value&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">show-action</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">placeholder</span>=<span class="string">&quot;请输入搜索关键词&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        @<span class="attr">search</span>=<span class="string">&quot;onSearch&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        @<span class="attr">cancel</span>=<span class="string">&quot;onCancel&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    /&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">import</span> &#123; ref &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">import</span> &#123; showToast &#125; <span class="keyword">from</span> <span class="string">&#x27;vant&#x27;</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="title function_">setup</span>(<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">const</span> value = <span class="title function_">ref</span>(<span class="string">&#x27;&#x27;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">const</span> <span class="title function_">onSearch</span> = (<span class="params">val</span>) =&gt; <span class="title function_">showToast</span>(val);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">const</span> <span class="title function_">onCancel</span> = (<span class="params"></span>) =&gt; <span class="title function_">showToast</span>(<span class="string">&#x27;取消&#x27;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">return</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      value,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      onSearch,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      onCancel,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">&#125;;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">style</span> <span class="attr">scoped</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>在main.ts中引入Search：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Search</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;vant&#x27;</span>;</span><br><span class="line">app.<span class="title function_">use</span>(<span class="title class_">Search</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>在configs&#x2F;route.ts中，增加对应的路由：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="attr">path</span>:<span class="string">&#x27;/search&#x27;</span>, <span class="attr">component</span>: <span class="title class_">SearchPage</span>&#125;,</span><br></pre></td></tr></table></figure>
+
+
+
+<p>还有就是在BasicLayout.Vue中进行相应的修改，参照vue-router官网的文档：<a target="_blank" rel="noopener" href="https://router.vuejs.org/zh/guide/">入门 | Vue Router (vuejs.org)</a></p>
+<p>对如下的这行左边返回按钮操作：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">onClickLeft</span> = (<span class="params"></span>) =&gt; <span class="title function_">alert</span>(<span class="string">&#x27;left&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>进行修改：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useRouter &#125; <span class="keyword">from</span> <span class="string">&#x27;vue-router&#x27;</span>;</span><br><span class="line"><span class="title function_">setup</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">const</span> router = <span class="title function_">useRouter</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">onClickLeft</span> = (<span class="params"></span>) =&gt;&#123;</span><br><span class="line">      router.<span class="title function_">push</span>(<span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">onClickRight</span> =(<span class="params"></span>) =&gt;&#123;</span><br><span class="line">      router.<span class="title function_">push</span>(<span class="string">&#x27;/search&#x27;</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>完成上述修改后，点击 “返回”可以回到主页，而点击”搜索”图标，可以弹出搜索页。</p>
+<h4 id="8、构建及部署"><a href="#8、构建及部署" class="headerlink" title="8、构建及部署"></a>8、构建及部署</h4><p>具体的开发过程，我们告一段落，接下来我们重点介绍下，如何构建生产版本以及部署。构建生产版本，只需点击packge.json中的build左侧的绿色小三角形，构建如果没有遇到错误，则会在项目文件中新建dist目录，其中存放有构建出来的生产版本。</p>
+<p><img src="/./img/2024-03-23-%E6%9E%84%E5%BB%BA%E5%91%BD%E4%BB%A4%E7%9A%84%E8%BF%90%E8%A1%8C.jpg" alt="2024-03-23-构建命令的运行"></p>
+<p>如果你想预览当前的生产版本，可以点击preview对应的绿色小三角，即可以根据webstorm下方终端提示的地址访问。</p>
+<p>要部署到服务器，比如nginx，只需拷贝dist目录到服务器，然后设置nginx配置文件中的root目录即可。其他的部署方式，见官方文件：<a target="_blank" rel="noopener" href="https://vitejs.cn/guide/static-deploy.html">部署静态站点 {deploying-a-static-site} | Vite中文网 (vitejs.cn)</a></p>
+<h4 id="9、其他及源代码"><a href="#9、其他及源代码" class="headerlink" title="9、其他及源代码"></a>9、其他及源代码</h4><ul>
+<li><p>本项目的源代码位于<a target="_blank" rel="noopener" href="https://gitee.com/bigbug55/vantabc">gitee</a></p>
+</li>
+<li><p>本文只是一个入门教程，更多的完整的相关视频教程，可以参考如下的<strong>收费</strong>知识星球，近3万人的学习社区，</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://t.zsxq.com/183FavEAj"><em>编程有人同行，学习不再迷茫</em></a>：</p>
+<p><img src="/./img/2024-03-23-%E7%9F%A5%E8%AF%86%E6%98%9F%E7%90%83%E5%88%86%E4%BA%AB.jpg" alt="2024-03-23-知识星球分享"></p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+        <div id="lv-container"></div>
+        <div class="giscus"></div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a target="_blank" rel="noopener" href="https://johnstool.net">Johns Tool</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>  Theme <a target="_blank" rel="noopener" href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+</html>

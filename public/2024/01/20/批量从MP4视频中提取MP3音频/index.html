@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang=zh-CN>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:description" content="John&#39;s Tool">
+    <meta property="og:type" content="website">
+    <meta name="description" content="John&#39;s Tool">
+    <meta name="keyword"  content="软件工具,AI工具,在线工具,生产力工具">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        批量从MP4视频中提取MP3音频 - John&#39;s Tool
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_28hi1hpxx24.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?04d0ff17bafc7f61b5e0a5afc324e403";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+
+	
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> ~欢迎您来访! </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>contact@johnstool.net</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/collect/">
+                    <i class="iconfont icon-shoucang1"></i>
+                    <span>收藏</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7"><span class="toc-text">工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4"><span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-text">工作原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-text">注意事项</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-bg" id="search-bg"></div>
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> ~欢迎您来访! </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        批量从MP4视频中提取MP3音频
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2024-01-20 11:04:26</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#ffmpeg" title="ffmpeg">ffmpeg</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#video processing" title="video processing">video processing</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#batch script" title="batch script">batch script</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <p>如果手动一个一个地从多个视频文件中提取音频会很繁琐。无论您是在存档讲座、从视频文件创建音乐播放列表，还是只需要从MP4视频中分离音轨，自动化都可以节省大量时间。<br>在本指南中，您将学习如何使用<strong>FFmpeg</strong>和一个简短的<strong>Windows批处理脚本</strong>来<strong>批量从MP4视频中提取MP3文件</strong>——无需手动转换。</p>
+<hr>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ul>
+<li><strong>FFmpeg</strong> – 一个免费、强大的音频和视频处理命令行工具</li>
+<li><strong>Windows批处理脚本</strong> – 用于自动化重复的FFmpeg命令</li>
+</ul>
+<hr>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li><p><strong>安装FFmpeg（Windows版本）</strong></p>
+<ul>
+<li>从<a target="_blank" rel="noopener" href="https://ffmpeg.org/download.html">ffmpeg.org</a>下载官方FFmpeg构建版本。</li>
+<li>将<code>ffmpeg.exe</code>路径添加到Windows环境变量中，或者将其放置在与视频相同的目录中。</li>
+</ul>
+</li>
+<li><p><strong>创建批处理脚本</strong></p>
+<ul>
+<li><p>打开记事本并粘贴以下脚本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="keyword">for</span> %%a <span class="keyword">in</span> (*.mp4) <span class="keyword">do</span> (</span><br><span class="line">    ffmpeg -i <span class="string">&quot;%%a&quot;</span> -vn -acodec libmp3lame -qscale:a 0 <span class="string">&quot;%%~na.mp3&quot;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
+<li><p>将文件保存为<code>extract_mp3.bat</code>，保存在与MP4视频相同的文件夹中。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>运行脚本</strong></p>
+<ul>
+<li>双击<code>.bat</code>文件。</li>
+<li>脚本将遍历所有<code>.mp4</code>文件，并在同一目录中将其音频提取为<code>.mp3</code>。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><ul>
+<li><strong>@echo off</strong> — 在终端窗口中抑制命令输出。</li>
+<li><strong>for %%a in (*.mp4)</strong> — 遍历当前文件夹中的每个MP4文件。</li>
+<li><strong>ffmpeg -i “%%a”</strong> — 指定输入视频文件。</li>
+<li><strong>-vn</strong> — 排除视频输出（仅音频）。</li>
+<li><strong>-acodec libmp3lame</strong> — 使用LAME MP3编码器。</li>
+<li><strong>-qscale:a 0</strong> — 设置最佳音频质量（0 &#x3D; 最高）。</li>
+<li><strong>“%%~na.mp3”</strong> — 以原始视频命名输出文件，仅更改扩展名。</li>
+</ul>
+<hr>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
+<li>您可以调整<code>-qscale:a</code>来平衡文件大小和质量（例如，<code>2</code>表示中等质量）。</li>
+<li>对于其他音频格式（如<code>.wav</code>或<code>.aac</code>），只需替换编解码器和文件扩展名。</li>
+<li>FFmpeg必须正确安装或位于同一目录中，脚本才能运行。</li>
+</ul>
+<hr>
+<p>这个简单的工作流程自动化了本应是重复性的任务。通过FFmpeg和批处理文件，您可以在几秒钟内将整个文件夹的MP4视频转换为MP3 —— 非常适合播客制作、音乐存档或快速音频提取。</p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+        <div id="lv-container"></div>
+        <div class="giscus"></div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a target="_blank" rel="noopener" href="https://johnstool.net">Johns Tool</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>  Theme <a target="_blank" rel="noopener" href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+</html>

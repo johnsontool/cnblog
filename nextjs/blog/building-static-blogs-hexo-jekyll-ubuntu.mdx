@@ -1,0 +1,157 @@
+---
+title: 'Building Static Blog Websites with Hexo and Jekyll on Ubuntu'
+date: '2024-04-06'
+tags: ['hexo', 'jekyll', 'static site', 'blogging']
+draft: false
+summary: '在Ubuntu上使用Hexo和Jekyll框架构建静态博客网站的完整指南，包括安装、配置和部署。'
+layout: PostLayout
+images: ['/static/images/jekyll-homepage.jpg']
+---
+
+
+静态博客是指只包含静态资源（包括HTML、图片等）的博客网站，没有数据库或PHP动态语言。
+
+静态博客专注于：简单和快速。只要您知道如何使用markdown笔记，就可以使用模板快速构建个人博客。
+
+本文主要介绍两种创建静态博客的框架：Hexo和Jekyll：
+
+- Hexo基于Node.js开发，如果您熟悉JavaScript，可以快速上手
+- Jekyll基于Ruby开发
+
+除了开发语言的差异外，它们的使用习惯和社区资源都很相似。建议根据您对编程语言的熟悉程度来选择。
+
+## Hexo安装和使用
+
+### 1. 安装Node.js
+
+访问Node.js官方网站 [Node.js — Download Node.js® (nodejs.org)](https://nodejs.org/en/download/package-manager)
+
+首先安装nvm，然后使用它来安装Node.js：
+
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+```
+
+安装成功后，使用nvm安装Node.js版本v18.19.1：
+
+```bash
+nvm install 18
+## 输出版本号检查安装是否成功
+node -v
+npm -v
+```
+
+上面的node是Node.js的主程序，npm是其包管理工具，类似于Ubuntu中apt的作用。但是，apt用于下载、安装和管理Ubuntu下的应用程序，而npm用于下载、安装和管理Node.js中的库。
+
+### 2. 安装Hexo并使用
+
+```bash
+### 安装hexo脚手架命令
+npm install -g hexo-cli
+### Hexo项目初始化
+hexo init
+### 创建新博客文章
+hexo new "文章标题"
+### 将博客文章编译成HTML输出文件
+hexo generate
+### 启动hexo内置服务器查看效果
+hexo server
+```
+
+启动hexo内置服务后，您可以在http://localhost:4000/查看网站效果。
+
+### 3. Hexo博客模板
+
+在官方网站 [Themes | Hexo](https://hexo.io/themes/) 上，您可以看到各种模板。选择您喜欢的模板并将其下载到当前Hexo项目的themes/目录中。然后在Hexo的配置文件_config.yml中指定要使用的模板名称，例如使用aircloud模板：
+
+```bash
+theme: aircloud
+```
+
+完成模板设置后，您的博客将呈现相应的视觉效果，非常方便。
+
+### 4. 在Ubuntu上使用Hexo
+
+使用"hexo generate"命令后，将在Hexo项目文件下生成一个导出文件夹/public/，其中包含从markdown格式转换的HTML文件夹。使用git命令将整个public目录导入到Ubuntu的/var/www/目录中，然后在Ubuntu上配置Nginx服务器，将public目录作为网站的根目录。
+
+## Jekyll安装和使用
+
+Jekyll是一个静态网站生成器，它将纯文本转换为静态网站和博客，例如将您的markdown笔记转换为博客。使用Jekyll的主要好处之一是，由于它生成静态网站，因此不需要数据库或其他后端组件，使网站更容易部署和维护。
+
+要下载和安装最新版本的Ruby，我们使用rvm来安装Ruby，而不是Ubuntu默认的apt命令。
+
+步骤：首先安装rvm，使用rvm安装ruby，然后使用gem安装jekyll和bundler。
+
+### 1. 安装rvm
+
+```bash
+curl -sSL https://rvm.io/mpapis.asc | gpg --import -
+curl -sSL https://rvm.io/pkuczynski.asc | gpg --import -
+```
+
+下载rvm安装包：
+
+```bash
+curl -sSL https://get.rvm.io | bash -s stable
+```
+
+使终端生效：
+
+```bash
+source /home/tfzhang/.rvm/scripts/rvm
+```
+
+请注意，上面的home目录需要根据您自己的系统目录进行调整。
+
+### 安装最新版本的Ruby
+
+安装ruby：
+
+```bash
+rvm install ruby
+```
+
+安装后，检查ruby和rubygems是否正确安装：
+
+```bash
+ruby -v
+gem -v
+```
+
+如果输出版本号，则安装成功。
+
+安装jekyll和bundler：
+
+```bash
+gem install jekyll bundler
+```
+
+安装成功后，创建新的jekyll站点：
+
+```bash
+jekyll new my-new-site
+```
+
+进入新创建的my-new-site，然后启动jekyll服务器：
+
+```bash
+cd my-new-site && jekyll serve
+```
+
+运行服务器时，您可能会遇到错误：
+
+```bash
+could not find gem 'minima (~>2.5) in locally installed gems.'
+```
+
+您需要安装minima：
+
+```bash
+gem install minima
+```
+
+安装完成后，运行：`jekyll server`
+
+这将启动一个开发服务器，在您本地主机的端口上为您的站点提供服务（通常是http://localhost:4000/）。现在您可以通过浏览器访问此地址来查看您的站点。
+
+![Jekyll Homepage](/static/images/2024-03-21-jekyll启动首页.jpg)

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang=zh-CN>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:description" content="John&#39;s Tool">
+    <meta property="og:type" content="website">
+    <meta name="description" content="John&#39;s Tool">
+    <meta name="keyword"  content="软件工具,AI工具,在线工具,生产力工具">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        基于Ollama与AnythingLLM构建私人知识管理GPT - John&#39;s Tool
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_28hi1hpxx24.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?04d0ff17bafc7f61b5e0a5afc324e403";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+
+	
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> ~欢迎您来访! </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>contact@johnstool.net</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/collect/">
+                    <i class="iconfont icon-shoucang1"></i>
+                    <span>收藏</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81%E5%AE%89%E8%A3%85Ollama"><span class="toc-text">1、安装Ollama</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81%E5%AE%89%E8%A3%85AnythingLLM"><span class="toc-text">2、安装AnythingLLM</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%E3%80%81%E8%AE%BE%E7%BD%AEAnythingLLM%E5%B7%A5%E4%BD%9C%E7%A9%BA%E9%97%B4"><span class="toc-text">3、设置AnythingLLM工作空间</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4%E3%80%81%E4%B8%8A%E4%BC%A0%E5%90%84%E7%B1%BB%E6%96%87%E6%A1%A3"><span class="toc-text">4、上传各类文档</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5%E3%80%81%E5%85%B6%E4%BB%96%EF%BC%9A"><span class="toc-text">5、其他：</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-bg" id="search-bg"></div>
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> ~欢迎您来访! </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        基于Ollama与AnythingLLM构建私人知识管理GPT
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2024-04-02 11:04:55</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#大语言模型" title="大语言模型">大语言模型</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <p>Ollama是一个用于在本地运行大型语言模型（LLM）的开源框架，可以极大地简化大语言模型在本地的部署。Ollama的功能强大、易于使用和灵活多变的大型语言模型服务工具，可以让用户能够在自己的硬件环境中轻松部署和使用大规模预训练模型。</p>
+<p>AnythingLLM是一个全栈应用程序，能够将任何文档、资源或内容片段转化为上下文，供任何LLM（大语言模型）在聊天时作为参考使用。此外，它允许用户灵活选择所使用的LLM或向量数据库，并提供给LLM训练或者使用。</p>
+<p>本文探讨的私人知识助理GPT，主要思路由Ollama提供LLM能力，而由AnythingLLM整合各种文档、资源，供Ollama在聊天时作为参考使用。</p>
+<h5 id="1、安装Ollama"><a href="#1、安装Ollama" class="headerlink" title="1、安装Ollama"></a>1、安装Ollama</h5><p>访问Ollama官网：<a target="_blank" rel="noopener" href="https://ollama.com/%EF%BC%8C%E4%B8%8B%E8%BD%BD%E5%AF%B9%E5%BA%94%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%89%88%E6%9C%AC%EF%BC%8C%E6%AF%94%E5%A6%82windows%E3%80%82%E4%B8%8B%E8%BD%BD%E5%AE%8C%E6%88%90%E5%90%8E%EF%BC%8C%E5%8F%8C%E5%87%BB%E5%AE%8C%E6%88%90%E5%AE%89%E8%A3%85%E3%80%82">https://ollama.com/，下载对应操作系统的版本，比如windows。下载完成后，双击完成安装。</a></p>
+<p>完成安装后，需要下载大语言模型，选择”Models”，我们查找中文大模型，输入”chinese”，可以找到”llama2-chinese”，</p>
+<p><img src="/img/2024-04-02-ollama%E4%B8%8B%E8%BD%BD%E5%A4%A7%E9%A2%84%E8%A8%80%E6%A8%A1%E5%9E%8B-1712038932753-6.jpg" alt="2024-04-02-ollama下载大预言模型"></p>
+<p>该模型不同的参数对硬件有不同的要求：</p>
+<ul>
+<li>7b models generally require at least 8GB of RAM</li>
+<li>13b models generally require at least 16GB of RAM</li>
+</ul>
+<p>如果受限本机内存，可以选择7b的版本，在命令行终端输入如下命令，会开启下载安装，安装完成后会自动启动大语言模型。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ollama run llama2-chinese:7b-chat</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="2、安装AnythingLLM"><a href="#2、安装AnythingLLM" class="headerlink" title="2、安装AnythingLLM"></a>2、安装AnythingLLM</h5><p>AnythingLLM的官方地址：<a target="_blank" rel="noopener" href="https://useanything.com/%E3%80%82%E4%B8%8B%E8%BD%BD%E5%AF%B9%E5%BA%94%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%89%88%E6%9C%AC%EF%BC%8C%E6%AF%94%E5%A6%82windows%EF%BC%8C%E4%B8%8B%E8%BD%BD%E5%90%8E%E5%8F%8C%E5%87%BB%E5%AE%8C%E6%88%90%E5%AE%89%E8%A3%85%E3%80%82">https://useanything.com/。下载对应操作系统的版本，比如windows，下载后双击完成安装。</a></p>
+<h5 id="3、设置AnythingLLM工作空间"><a href="#3、设置AnythingLLM工作空间" class="headerlink" title="3、设置AnythingLLM工作空间"></a>3、设置AnythingLLM工作空间</h5><p>要使用AnythingLLM，首先要创建一个工作空间：</p>
+<p><img src="/img/2024-04-02-%E6%96%B0%E5%BB%BAworkspace.jpg" alt="2024-04-02-新建workspace"></p>
+<p>创建工作空间后，要配置如下：</p>
+<ol>
+<li>选择大语言模型</li>
+<li>选择词嵌入模型</li>
+<li>选择向量数据库</li>
+</ol>
+<p>因为已经安装本地Ollama大语言模型，所以我们选择Ollama作为大语言模型；</p>
+<p><img src="D:\Desktop\hexo-test\source_posts\imgpic\2024-04-02-选择llm模型.jpg" alt="2024-04-02-选择llm模型"></p>
+<p>词嵌入模型，我们也选择Ollama；</p>
+<p><img src="/img/2024-04-02-%E9%80%89%E6%8B%A9%E5%B5%8C%E5%85%A5%E6%A8%A1%E5%9E%8B.jpg" alt="2024-04-02-选择嵌入模型"></p>
+<p>而向量数据库，我们选择</p>
+<p><img src="/img/2024-04-02-%E9%80%89%E6%8B%A9%E5%90%91%E9%87%8F%E6%95%B0%E6%8D%AE%E5%BA%93.jpg" alt="2024-04-02-选择向量数据库"></p>
+<h5 id="4、上传各类文档"><a href="#4、上传各类文档" class="headerlink" title="4、上传各类文档"></a>4、上传各类文档</h5><p>要将AnythingLLM配置为私人GPT，我们需要上传个人的各种文档，比如pdf，txt，doc等等，点击工作空间旁的上传按钮：</p>
+<p><img src="/img/2024-04-02-%E7%82%B9%E5%87%BB%E4%B8%8A%E4%BC%A0%E6%96%87%E6%A1%A3.jpg" alt="2024-04-02-点击上传文档"></p>
+<p>然后先将本地文档拖拽到对应的目录，再将目录中的文档挪移到工作空间。</p>
+<p><img src="/img/2024-04-02-%E6%96%87%E6%A1%A3%E5%8A%A0%E5%85%A5%E5%88%B0%E5%B7%A5%E4%BD%9C%E7%A9%BA%E9%97%B4.jpg" alt="2024-04-02-文档加入到工作空间"></p>
+<p>当完成文档移动到后侧的工作空间，再点击提交，AnythingLLM会对文档进行解析，进行向量化处理。一旦完成处理，就可以和AnythingLLM就文档中的相关内容进行对话，十分方便。</p>
+<blockquote>
+<p>注意事项：如果计算机硬件配置较低的话，不管是文档解析，还是回答问题，都会比较卡。</p>
+</blockquote>
+<h5 id="5、其他："><a href="#5、其他：" class="headerlink" title="5、其他："></a>5、其他：</h5><p>国内同类的基于大语言模型的知识管理模型，推荐免费的网易有道云：<a target="_blank" rel="noopener" href="https://qanything.ai/">QAnything</a></p>
+<p>获取本文的同款Ollama和AnythingLLM的windows安装软件，可以分别发送”ollama”和”anythingllm”到公众号”青椒工具”。</p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+        <div id="lv-container"></div>
+        <div class="giscus"></div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a target="_blank" rel="noopener" href="https://johnstool.net">Johns Tool</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>  Theme <a target="_blank" rel="noopener" href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+</html>

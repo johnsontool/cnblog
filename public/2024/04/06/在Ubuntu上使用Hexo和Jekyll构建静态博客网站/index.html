@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang=zh-CN>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:description" content="John&#39;s Tool">
+    <meta property="og:type" content="website">
+    <meta name="description" content="John&#39;s Tool">
+    <meta name="keyword"  content="软件工具,AI工具,在线工具,生产力工具">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        在Ubuntu上使用Hexo和Jekyll构建静态博客网站 - John&#39;s Tool
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_28hi1hpxx24.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?04d0ff17bafc7f61b5e0a5afc324e403";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+
+	
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> ~欢迎您来访! </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>contact@johnstool.net</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/collect/">
+                    <i class="iconfont icon-shoucang1"></i>
+                    <span>收藏</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8"><span class="toc-text">Hexo安装和使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85Node-js"><span class="toc-text">1. 安装Node.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85Hexo%E5%B9%B6%E4%BD%BF%E7%94%A8"><span class="toc-text">2. 安装Hexo并使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Hexo%E5%8D%9A%E5%AE%A2%E6%A8%A1%E6%9D%BF"><span class="toc-text">3. Hexo博客模板</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%9C%A8Ubuntu%E4%B8%8A%E4%BD%BF%E7%94%A8Hexo"><span class="toc-text">4. 在Ubuntu上使用Hexo</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Jekyll%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8"><span class="toc-text">Jekyll安装和使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85rvm"><span class="toc-text">1. 安装rvm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC%E7%9A%84Ruby"><span class="toc-text">安装最新版本的Ruby</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-bg" id="search-bg"></div>
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> ~欢迎您来访! </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        在Ubuntu上使用Hexo和Jekyll构建静态博客网站
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2024-04-06 11:04:26</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#hexo" title="hexo">hexo</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#jekyll" title="jekyll">jekyll</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#static site" title="static site">static site</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#blogging" title="blogging">blogging</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <p>静态博客是指只包含静态资源（包括HTML、图片等）的博客网站，没有数据库或PHP动态语言。</p>
+<p>静态博客专注于：简单和快速。只要您知道如何使用markdown笔记，就可以使用模板快速构建个人博客。</p>
+<p>本文主要介绍两种创建静态博客的框架：Hexo和Jekyll：</p>
+<ul>
+<li>Hexo基于Node.js开发，如果您熟悉JavaScript，可以快速上手</li>
+<li>Jekyll基于Ruby开发</li>
+</ul>
+<p>除了开发语言的差异外，它们的使用习惯和社区资源都很相似。建议根据您对编程语言的熟悉程度来选择。</p>
+<h2 id="Hexo安装和使用"><a href="#Hexo安装和使用" class="headerlink" title="Hexo安装和使用"></a>Hexo安装和使用</h2><h3 id="1-安装Node-js"><a href="#1-安装Node-js" class="headerlink" title="1. 安装Node.js"></a>1. 安装Node.js</h3><p>访问Node.js官方网站 <a target="_blank" rel="noopener" href="https://nodejs.org/en/download/package-manager">Node.js — Download Node.js® (nodejs.org)</a></p>
+<p>首先安装nvm，然后使用它来安装Node.js：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash</span><br></pre></td></tr></table></figure>
+
+<p>安装成功后，使用nvm安装Node.js版本v18.19.1：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nvm install 18</span><br><span class="line"><span class="comment">## 输出版本号检查安装是否成功</span></span><br><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+
+<p>上面的node是Node.js的主程序，npm是其包管理工具，类似于Ubuntu中apt的作用。但是，apt用于下载、安装和管理Ubuntu下的应用程序，而npm用于下载、安装和管理Node.js中的库。</p>
+<h3 id="2-安装Hexo并使用"><a href="#2-安装Hexo并使用" class="headerlink" title="2. 安装Hexo并使用"></a>2. 安装Hexo并使用</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### 安装hexo脚手架命令</span></span><br><span class="line">npm install -g hexo-cli</span><br><span class="line"><span class="comment">### Hexo项目初始化</span></span><br><span class="line">hexo init</span><br><span class="line"><span class="comment">### 创建新博客文章</span></span><br><span class="line">hexo new <span class="string">&quot;文章标题&quot;</span></span><br><span class="line"><span class="comment">### 将博客文章编译成HTML输出文件</span></span><br><span class="line">hexo generate</span><br><span class="line"><span class="comment">### 启动hexo内置服务器查看效果</span></span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<p>启动hexo内置服务后，您可以在<a target="_blank" rel="noopener" href="http://localhost:4000/%E6%9F%A5%E7%9C%8B%E7%BD%91%E7%AB%99%E6%95%88%E6%9E%9C%E3%80%82">http://localhost:4000/查看网站效果。</a></p>
+<h3 id="3-Hexo博客模板"><a href="#3-Hexo博客模板" class="headerlink" title="3. Hexo博客模板"></a>3. Hexo博客模板</h3><p>在官方网站 <a target="_blank" rel="noopener" href="https://hexo.io/themes/">Themes | Hexo</a> 上，您可以看到各种模板。选择您喜欢的模板并将其下载到当前Hexo项目的themes&#x2F;目录中。然后在Hexo的配置文件_config.yml中指定要使用的模板名称，例如使用aircloud模板：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: aircloud</span><br></pre></td></tr></table></figure>
+
+<p>完成模板设置后，您的博客将呈现相应的视觉效果，非常方便。</p>
+<h3 id="4-在Ubuntu上使用Hexo"><a href="#4-在Ubuntu上使用Hexo" class="headerlink" title="4. 在Ubuntu上使用Hexo"></a>4. 在Ubuntu上使用Hexo</h3><p>使用”hexo generate”命令后，将在Hexo项目文件下生成一个导出文件夹&#x2F;public&#x2F;，其中包含从markdown格式转换的HTML文件夹。使用git命令将整个public目录导入到Ubuntu的&#x2F;var&#x2F;www&#x2F;目录中，然后在Ubuntu上配置Nginx服务器，将public目录作为网站的根目录。</p>
+<h2 id="Jekyll安装和使用"><a href="#Jekyll安装和使用" class="headerlink" title="Jekyll安装和使用"></a>Jekyll安装和使用</h2><p>Jekyll是一个静态网站生成器，它将纯文本转换为静态网站和博客，例如将您的markdown笔记转换为博客。使用Jekyll的主要好处之一是，由于它生成静态网站，因此不需要数据库或其他后端组件，使网站更容易部署和维护。</p>
+<p>要下载和安装最新版本的Ruby，我们使用rvm来安装Ruby，而不是Ubuntu默认的apt命令。</p>
+<p>步骤：首先安装rvm，使用rvm安装ruby，然后使用gem安装jekyll和bundler。</p>
+<h3 id="1-安装rvm"><a href="#1-安装rvm" class="headerlink" title="1. 安装rvm"></a>1. 安装rvm</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -sSL https://rvm.io/mpapis.asc | gpg --import -</span><br><span class="line">curl -sSL https://rvm.io/pkuczynski.asc | gpg --import -</span><br></pre></td></tr></table></figure>
+
+<p>下载rvm安装包：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sSL https://get.rvm.io | bash -s stable</span><br></pre></td></tr></table></figure>
+
+<p>使终端生效：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /home/tfzhang/.rvm/scripts/rvm</span><br></pre></td></tr></table></figure>
+
+<p>请注意，上面的home目录需要根据您自己的系统目录进行调整。</p>
+<h3 id="安装最新版本的Ruby"><a href="#安装最新版本的Ruby" class="headerlink" title="安装最新版本的Ruby"></a>安装最新版本的Ruby</h3><p>安装ruby：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rvm install ruby</span><br></pre></td></tr></table></figure>
+
+<p>安装后，检查ruby和rubygems是否正确安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ruby -v</span><br><span class="line">gem -v</span><br></pre></td></tr></table></figure>
+
+<p>如果输出版本号，则安装成功。</p>
+<p>安装jekyll和bundler：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem install jekyll bundler</span><br></pre></td></tr></table></figure>
+
+<p>安装成功后，创建新的jekyll站点：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jekyll new my-new-site</span><br></pre></td></tr></table></figure>
+
+<p>进入新创建的my-new-site，然后启动jekyll服务器：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> my-new-site &amp;&amp; jekyll serve</span><br></pre></td></tr></table></figure>
+
+<p>运行服务器时，您可能会遇到错误：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">could not find gem <span class="string">&#x27;minima (~&gt;2.5) in locally installed gems.&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>您需要安装minima：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem install minima</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后，运行：<code>jekyll server</code></p>
+<p>这将启动一个开发服务器，在您本地主机的端口上为您的站点提供服务（通常是<a target="_blank" rel="noopener" href="http://localhost:4000/%EF%BC%89%E3%80%82%E7%8E%B0%E5%9C%A8%E6%82%A8%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AE%BF%E9%97%AE%E6%AD%A4%E5%9C%B0%E5%9D%80%E6%9D%A5%E6%9F%A5%E7%9C%8B%E6%82%A8%E7%9A%84%E7%AB%99%E7%82%B9%E3%80%82">http://localhost:4000/）。现在您可以通过浏览器访问此地址来查看您的站点。</a></p>
+<p><img src="/img/2024-03-21-jekyll%E5%90%AF%E5%8A%A8%E9%A6%96%E9%A1%B5.jpg" alt="2024-03-21-jekyll启动首页"></p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+        <div id="lv-container"></div>
+        <div class="giscus"></div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a target="_blank" rel="noopener" href="https://johnstool.net">Johns Tool</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>  Theme <a target="_blank" rel="noopener" href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+</html>
