@@ -1,9 +1,9 @@
 ---
-title: NameCrane:使用9esim实体esim卡让国行手机支持esims
+title: 使用9esim实体esim卡让国行手机支持esims
 date: 2025-11-29 11:04:26
 author: John
 tags:
-    -esim
+    - esim
 ---
 
 
@@ -36,7 +36,7 @@ tags:
 
 ![esikmo账户-horz](/img/esikmo账户-horz.jpg)
 
-访问[9esim官网](https://www.9esim.com/?coupon=sduanjucc2)下载电脑对应的读卡软件,以windows电脑为例,下载EasyLPAC,下载地址为:https://github.com/creamlike1024/EasyLPAC/releases,下载压缩包后,解压,可以看到EasyPAC.exe可执行文件.
+访问[9esim官网](https://www.9esim.com/?coupon=sduanjucc2)下载电脑对应的读卡软件,以windows电脑为例,下载EasyLPAC,下载地址为:https://github.com/creamlike1024/EasyLPAC/releases,  下载压缩包后,解压,可以看到EasyPAC.exe可执行文件.
 
 ![image-20251128210614155](/img/image-20251128210614155.png)
 
