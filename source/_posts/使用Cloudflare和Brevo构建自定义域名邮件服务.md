@@ -1,7 +1,7 @@
 ---
 title: 使用Cloudflare和Brevo构建自定义域名邮件服务
 date: 2025-10-29 11:04:26
-author: tfzhang
+author: John
 tags:
   - Cloudflare
   - Brevo

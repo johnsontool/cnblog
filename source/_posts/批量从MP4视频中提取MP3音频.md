@@ -1,7 +1,7 @@
 ---
 title: 批量从MP4视频中提取MP3音频
 date: 2024-01-20 11:04:26
-author: tfzhang
+author: John
 tags:
   - ffmpeg
   - video processing

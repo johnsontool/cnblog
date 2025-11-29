@@ -1,7 +1,7 @@
 ---
 title: 基于Ollama与AnythingLLM构建私人知识管理GPT
 date: 2024-04-02 11:04:55
-author: tfzhang
+author: John
 tags:
   - 大语言模型
 ---

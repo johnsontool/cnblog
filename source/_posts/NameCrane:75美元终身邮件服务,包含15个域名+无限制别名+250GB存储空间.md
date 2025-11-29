@@ -1,7 +1,7 @@
 ---
 title: NameCrane:75美元终身邮件服务,包含15个域名+无限制别名+250GB存储空间
 date: 2025-11-01 11:04:26
-author: tfzhang
+author: John
 tags:
   - email
 ---

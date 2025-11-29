@@ -1,6 +1,6 @@
 ---
 title: 基于code.fun的前端代码自动生成
-author: tfzhang
+author: John
 date: 2024-03-25
 tags:
   - 前端

@@ -1,7 +1,7 @@
 ---
 title: 结合vite与vant的移动端前端入门笔记
 date: 2024-03-23
-author: tfzhang
+author: John
 tags:
 	- 项目开发
 	- vant

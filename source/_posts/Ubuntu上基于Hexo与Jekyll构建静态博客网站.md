@@ -1,7 +1,7 @@
 ---
 title: Ubuntu上基于Hexo与Jekyll构建静态博客网站
 date: 2024-04-06 11:04:26
-author: tfzhang
+author: John
 tags:
   - 计算机网络
 ---

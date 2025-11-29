@@ -1,7 +1,7 @@
 ---
 title: 使用Flask和Nginx构建后端API系统
 date: 2024-03-27 11:04:26
-author: tfzhang
+author: John
 tags:
   - flask
   - nginx

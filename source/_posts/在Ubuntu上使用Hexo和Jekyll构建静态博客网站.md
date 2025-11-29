@@ -1,7 +1,7 @@
 ---
 title: 在Ubuntu上使用Hexo和Jekyll构建静态博客网站
 date: 2024-04-06 11:04:26
-author: tfzhang
+author: John
 tags:
   - hexo
   - jekyll
